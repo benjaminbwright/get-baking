@@ -1,0 +1,19 @@
+{
+  "name": "get-baking",
+  "version": "1.0.0",
+  "description": "App for managing time-consuming baking orders.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benjaminbwright/get-baking.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/benjaminbwright/get-baking/issues"
+  },
+  "homepage": "https://github.com/benjaminbwright/get-baking#readme"
+}
