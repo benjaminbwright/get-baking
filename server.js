@@ -17,6 +17,8 @@ app = express();
 mongoose.connect("mongodb://localhost/getbaking", { useNewUrlParser: true });
 
 // connect to models folder
+const db = require('./db');
+console.log(db.User)
 
 // setup public static folder
 app.use(express.static('public'));
