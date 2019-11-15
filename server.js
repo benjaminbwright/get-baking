@@ -1,6 +1,7 @@
 // add environment variables to the process object
 require('dotenv').config();
 
+// require node modules
 // express
 var express = require('express');
 // mongoose
@@ -40,4 +41,3 @@ app.listen(PORT, () => {
   //console log the port
   console.log(`The server is running on ${PORT}`);
 });
-
