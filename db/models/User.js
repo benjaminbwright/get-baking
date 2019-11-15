@@ -1,11 +1,15 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+
+const saltRounds = 10;
+
+
 const Schema = mongoose.Schema;
 if (mongoose.connection.readyState === 0)
     mongoose.connect(require('../connection-config.js'))
         .catch(err => {
             console.error('mongoose Error', err)
         });
-
 
 
 let UserSchema = new Schema({
@@ -25,8 +29,15 @@ let UserSchema = new Schema({
 });
 
 UserSchema.pre('save', function (next) {
-    this.updatedAt = Date.now();
-    next();
+    const user = this;
+    bcrypt.genSalt(saltRounds, function(err, salt) {
+        bcrypt.hash(user.password, salt, function(err, hash) {
+            // Store hash in your password DB.
+            user.password = hash;
+            user.updatedAt = Date.now();
+            next();
+        });
+    });
 });
 
 UserSchema.pre('update', function () {
