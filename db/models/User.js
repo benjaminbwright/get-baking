@@ -14,6 +14,7 @@ if (mongoose.connection.readyState === 0)
 
 let UserSchema = new Schema({
     username: { type: String, required: true },
+    // TODO: add password validation
     password: { type: String, required: true },
     firstName: { type: String },
     lastName: { type: String },
