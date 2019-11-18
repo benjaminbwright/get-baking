@@ -1,26 +1,28 @@
 {
-  "name": "get-baking",
-  "version": "1.0.0",
-  "description": "App for managing time-consuming baking orders.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/benjaminbwright/get-baking.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/benjaminbwright/get-baking/issues"
-  },
-  "homepage": "https://github.com/benjaminbwright/get-baking#readme",
-  "dependencies": {
-    "bcrypt": "^3.0.6",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "mongoose": "^5.7.11",
-    "mongoose-cli": "^1.0.5"
-  }
+    "name": "get-baking",
+    "version": "1.0.0",
+    "description": "App for managing time-consuming baking orders.",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "nodemon server.js & npm run start-react",
+        "start-react": "cd client && npm start"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/benjaminbwright/get-baking.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/benjaminbwright/get-baking/issues"
+    },
+    "homepage": "https://github.com/benjaminbwright/get-baking#readme",
+    "dependencies": {
+        "bcrypt": "^3.0.6",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "mongoose": "^5.7.11",
+        "mongoose-cli": "^1.0.5"
+    }
 }

@@ -46,7 +46,6 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname,'/public/404.html'))
 });
 
-
 // start the express app listener
 app.listen(PORT, () => {
   //console log the port
