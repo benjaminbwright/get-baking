@@ -1,9 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-// TODO: move to api routes folder
-// TODO: create user CRUD
-
 // Create new user
 router.post('/api/users', ( req , res) => {
   const user = new db.User(req.body);

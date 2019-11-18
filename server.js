@@ -6,6 +6,8 @@ require('dotenv').config();
 const express = require('express');
 // mongoose
 const mongoose = require('mongoose');
+// path
+const path = require('path');
 
 // the express server port
 const PORT = process.env.PORT;
@@ -22,6 +24,7 @@ console.log(db.User)
 
 // setup public static folder
 app.use(express.static('public'));
+
 // parse request bodies
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -30,7 +33,6 @@ app.use(express.json());
 // setup "Hello World" route
 app.get('/', (req,res) => {
   // send hello world as a string
-  // TODO: add a static html page in the public folder instead
   res.send('Hello World!!');
 })
 
@@ -42,7 +44,8 @@ app.use('/api/users', userRoutes)
 app.get('*', (req, res) => {
   // send the 404 message
   // TODO: add a static file for this
-  res.send("404 get out of my site");
+  // res.sendFile("404 get out of my site");
+  res.sendFile(path.join(__dirname,'/public/404.html'))
 });
 
 
