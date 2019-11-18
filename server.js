@@ -43,8 +43,6 @@ app.use('/api/users', userRoutes)
 // setup 404 route
 app.get('*', (req, res) => {
   // send the 404 message
-  // TODO: add a static file for this
-  // res.sendFile("404 get out of my site");
   res.sendFile(path.join(__dirname,'/public/404.html'))
 });
 
