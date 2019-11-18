@@ -36,12 +36,35 @@ app.get('/', (req,res) => {
 
 // Users routes
 // TODO: move to api routes folder
-app.post('/api/users', function(req,res) {
+// TODO: create user CRUD
+
+// Create new user
+app.post('/api/users', ( req , res) => {
   const user = new db.User(req.body);
   db.User.create(user)
     .then(function(user){
       res.send("user inserted");
     });
+});
+
+// Get all users
+app.get('/api/users', ( req, res ) => {
+  res.send("all the users will display here");
+});
+
+// Get a single user
+app.get('/api/users/:id', ( req, res ) => {
+  res.send(`User ${req.params.id} will display here`);
+});
+
+// update a user
+app.put('/api/users/:id', ( req, res ) => {
+  res.send(`User ${req.params.id} will be updated here`);
+});
+
+// delete a user
+app.delete('/api/users/:id', ( req, res ) => {
+  res.send(`User ${req.params.id} will be destroyed here`);
 });
 
 // setup 404 route
