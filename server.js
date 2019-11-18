@@ -34,7 +34,9 @@ app.get('/', (req,res) => {
   res.send('Hello World!!');
 })
 
-app.post('/users', function(req,res) {
+// Users routes
+// TODO: move to api routes folder
+app.post('/api/users', function(req,res) {
   const user = new db.User(req.body);
   db.User.create(user)
     .then(function(user){
