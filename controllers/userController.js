@@ -7,5 +7,9 @@ module.exports = {
       .then(function(user){
         res.json(user);
       });
+  },
+
+  getAllUsers: function( req, res ) {
+    res.send("all the users will display here");
   }
 }
