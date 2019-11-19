@@ -1,17 +1,15 @@
 const express = require('express');
 const router = express.Router();
 
-const db = require('../../db')
+const userController = require('../../controllers/userController');
 
 // Create new user
 // this is used during the registration process
 // TODO: protect this route so only admins new users can create a new user
-router.post('/', ( req , res) => {
-  const user = new db.User(req.body);
-  db.User.create(user)
-    .then(function(user){
-      res.json(user);
-    });
+router.post('/', userController.registerUser);
+
+router.post('/login', ( req, res ) => {
+  
 });
 
 // Get all users
