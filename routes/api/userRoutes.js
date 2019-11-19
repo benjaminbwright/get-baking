@@ -8,15 +8,12 @@ const userController = require('../../controllers/userController');
 // TODO: protect this route so only admins new users can create a new user
 router.post('/', userController.registerUser);
 
-router.post('/login', ( req, res ) => {
-  
-});
+// Login
+router.post('/login', userController.loginUser);
 
 // Get all users
 // TODO: protect this route only for admins
-router.get('/', ( req, res ) => {
-  res.send("all the users will display here");
-});
+router.get('/', userController.getAllUsers);
 
 // Get a single user
 // TODO: protect this route for authenticated users and/or admins
