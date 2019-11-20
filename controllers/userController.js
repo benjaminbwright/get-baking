@@ -54,7 +54,13 @@ module.exports = {
           if (user !== null) {
             bcrypt.compare(password, user.password, function(err, result) {
               // Create a json web token & return it as json.
-              auth.getToken(user, function(err, token) {
+              // Sanitized user for token payload
+              const tokenUser = {
+                firstName: user[0].firstName,
+                lastName: user[0].lastName,
+              }
+              console.log(tokenUser);
+              auth.getToken(tokenUser, function(err, token) {
                 if (err) {console.log(err);}
                 res.status(200).json({
                   message: "Auth OK",

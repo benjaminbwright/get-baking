@@ -3,13 +3,8 @@ let jwt = require("jsonwebtoken");
 module.exports = {
   // take a user object and generate a token
   getToken: function(user, callback) {
-    // Sanitized user for token payload
-    const tokenUser = {
-      firstName: user[0].firstName,
-      lastName: user[0].lastName,
-    }
     // Sign the token
-    jwt.sign({tokenUser}, process.env.JWT_PRIVATEKEY, {expiresIn: "1h"}, function(err, token) {
+    jwt.sign({user}, process.env.JWT_PRIVATEKEY, {expiresIn: "1h"}, function(err, token) {
       callback(err, token);
     });
   },
