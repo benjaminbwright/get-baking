@@ -18,22 +18,16 @@ router.get('/', userController.getAllUsers);
 // Get a single user
 // TODO: protect this route for authenticated users and/or admins
 // authenticated user can only get their own user information
-router.get('/:id', ( req, res ) => {
-  res.send(`User ${req.params.id} will display here`);
-});
+router.get('/:id', userController.getSingleUser);
 
 // update a user
 // TODO: protect this route for authenticated users and/or admins
 // authenticated users can only update their own information
-router.put('/:id', ( req, res ) => {
-  res.send(`User ${req.params.id} will be updated here`);
-});
+router.put('/:id', userController.updateUser);
 
 // delete a user
 // TODO: protect this route for authenticated users and/or admins
 // authenticated users can only delete their own infomation
-router.delete('/:id', ( req, res ) => {
-  res.send(`User ${req.params.id} will be destroyed here`);
-});
+router.delete('/:id', userController.deleteUser);
 
 module.exports = router;
