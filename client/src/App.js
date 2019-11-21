@@ -7,15 +7,36 @@ import UnauthenticatedApp from './components/UnauthenticatedApp'
 // TODO: Only show authenticated app if provider displayse logged in
 // TODO: only show unauthenticated app if login is false
 
-function App() {
+class App extends React.Component {
   
-  const loggedIn = false;
+  state = {
+    loggedIn: false
+  }
 
-  return loggedIn ? (
-    <AuthenticatedApp />
-  ) : (
-    <UnauthenticatedApp />
-  );
+  // login click handler
+  // delete when real auth is setup
+  handleLoginClick = (loggedIn) => {
+    this.setState({
+      loggedIn: true
+    })
+  }
+
+  // logout click handler
+  // delete when real auth is setup
+  handleLogoutClick = (loggedIn) => {
+    this.setState({
+      loggedIn: false
+    })
+  }
+  
+  render() {
+    return this.state.loggedIn ? (
+      <AuthenticatedApp logout={this.handleLogoutClick} />
+    ) : (
+      <UnauthenticatedApp login={this.handleLoginClick} />
+    );
+  }
+
 
 }
 
