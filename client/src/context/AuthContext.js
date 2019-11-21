@@ -2,14 +2,35 @@ import React from 'react'
 
 const AuthContext = React.createContext();
 
-function AuthProvider(props) {
+class AuthProvider extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      authUser: null
+    }
+  }
 
-  const loggedIn = false;
+  fetch = async () => {
+    this.setState({ loading: true }); 
+    try {
+      const authUser = await {displayName: "Ben"};
+      this.setState({ authUser, loading: false });
+    } catch (error) { 
+      this.setState({ error, loading: false });
+    } 
+  };
 
-  return (
-    <AuthContext.Provider value={{loggedIn}} {...props} />
-  )
+  // authUser = {displayName: "Ben"}
+  
+  componentDidMount() {
+    this.fetch();
+  }
 
+  render() {
+    return (
+      <AuthContext.Provider value={ this.state } {...this.props} />
+    )
+  }
 }
 
 const useAuth = () => React.useContext(AuthContext);
