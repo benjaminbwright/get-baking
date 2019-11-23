@@ -1,6 +1,5 @@
 import React from 'react'
 import axios from 'axios'
-import { stringify } from 'querystring';
 
 const AuthContext = React.createContext();
 
@@ -17,7 +16,13 @@ class AuthProvider extends React.Component {
     this.setState({ loading: true }); 
     try {
       // const authUser = await {displayName: "Ben"};
-      const authUser = undefined;
+      const localStorageUser = JSON.parse(localStorage.getItem('getBakingUser'));
+      const { firstName, lastName } = localStorageUser.authUser
+      const authUser = {
+        displayName: `${firstName} ${lastName}`,
+        token: localStorageUser.token
+      }
+
       this.setState({ authUser, loading: false });
     } catch (error) { 
       this.setState({ error, loading: false });
