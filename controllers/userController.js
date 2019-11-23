@@ -8,6 +8,7 @@ module.exports = {
 
   // Register/create a new user
   registerUser: function( req, res ) {
+    // 
     const user = new db.User(req.body);
     db.User.create(user)
       .then(function(user){
@@ -65,7 +66,8 @@ module.exports = {
                 res.status(200).json({
                   message: "Auth OK",
                   token: token,
-                  errors: errors
+                  errors: errors,
+                  authUser: tokenUser
                 });
               });
             });

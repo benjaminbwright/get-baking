@@ -12,11 +12,11 @@ import { useAuth } from './context/AuthContext'
 const App = () => {
 
   const auth = useAuth();
-  console.log(auth.authUser);
-  return auth.authUser ? (
-    <AuthenticatedApp displayName={auth.authUser.displayName} />
+  console.log(auth.user);
+  return auth.user ? (
+    <AuthenticatedApp displayName={auth.user.displayName} logout={auth.logout} />
   ) : (
-    <UnauthenticatedApp />
+    <UnauthenticatedApp login={auth.login} />
   );
 }
 
