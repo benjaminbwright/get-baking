@@ -89,7 +89,11 @@ module.exports = {
     db.User.find()
       .then(users => {
         console.log(users);
-        res.json(users);
+        const data = {
+          users,
+          decoded: req.decoded
+        }
+        res.json(data);
       });
       //TODO: add some error handling
     

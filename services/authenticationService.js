@@ -21,11 +21,12 @@ module.exports = {
       console.log(bearer[1]);
 
       // verify the token
-      jwt.verify(token, process.env.JWT_PRIVATEKEY, (err, authorizedData) => {
+      jwt.verify(token, process.env.JWT_PRIVATEKEY, (err, decoded) => {
         if (err) {
           req.authError = err;
           res.sendStatus(403);
         }
+        req.decoded = decoded;
         next();
       });
       
