@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import token from '../utils/token'
 
 const AuthContext = React.createContext();
 
@@ -7,7 +8,7 @@ class AuthProvider extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      authUser: null,
+      authUser: undefined,
       authToken: undefined
     }
   }
@@ -15,18 +16,20 @@ class AuthProvider extends React.Component {
   fetch = async () => {
     this.setState({ loading: true }); 
     try {
-      // const authUser = await {displayName: "Ben"};
-      const localStorageUser = JSON.parse(localStorage.getItem('getBakingUser'));
-      if (localStorageUser.token) {
-        const { firstName, lastName } = localStorageUser.authUser
-        const authUser = {
-          displayName: `${firstName} ${lastName}`,
-          token: localStorageUser.token
+      // is there a token in local storage already?
+      const localStorageToken = token.getToken('getBakingUser');
+      // if so...
+      if (localStorageToken) {
+        // add the token to the authUser
+        
+        const authToken = {
+          authToken: localStorageToken
         }
-        this.setState({ authUser, loading: false });
+        this.setState({ authToken, 
+          loading: false });
       } else {
         localStorage.removeItem('getBakingUser');
-        this.setState({ authUser: undefined})
+        this.setState({ authUser: undefined, authToken: undefined})
       }
 
       
@@ -35,7 +38,6 @@ class AuthProvider extends React.Component {
     } 
   };
 
-  // authUser = {displayName: "Ben"}
 
   login = () => {
     let credentials = {
@@ -45,18 +47,14 @@ class AuthProvider extends React.Component {
     }
     axios.post('/api/users/login', credentials)
       .then(res => {
-        console.log(res);
-
-        // add the authUser & token to local storage
-        localStorage.setItem(`getBakingUser`, JSON.stringify(res.data));
-        // setup display name
-        // TODO: generat the display name in the the user model
-        const { firstName, lastName } = res.data.authUser;
-        const displayName = `${firstName} ${lastName}`;
         const authToken = res.data.token
         console.log(authToken)
+        // add the authUser & token to local storage
+        localStorage.setItem(`getBakingUser`, JSON.stringify(authToken));
+        // setup display name
+        // TODO: generat the display name in the the user model
+  
         this.setState({ 
-          authUser: { displayName },
           authToken
         })
       });
@@ -75,6 +73,7 @@ class AuthProvider extends React.Component {
   render() {
     const user = this.state.authUser;
     const token = this.state.authtoken;
+    console.log(`token: ${token}`)
     const login = this.login;
     const logout = this.logout;
     

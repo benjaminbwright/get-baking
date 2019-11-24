@@ -7,33 +7,33 @@ class AuthenticatedApp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      //TODO: put this in some kind of method I can import
+      //get the token from local storage
       token: token.getToken(`getBakingUser`),
-      // token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImZpcnN0TmFtZSI6Ik1vcmsiLCJsYXN0TmFtZSI6ImRlIE1vaXMifSwiaWF0IjoxNTc0NDgwMTUzLCJleHAiOjE1NzQ0ODAyMTN9.2lDLzfT4C4foqRDtiswgmLiu31ufxgvgCda2i2W3Pn8',
       users: []
     }
   }
 
   componentDidMount() {
-    console.log(this.state.token)
-    axios.get(
-      '/api/users',
-      {
-        headers: {
-          Authorization: `Bearer ${this.state.token}`
+    if (!this.state.token) {
+      this.props.logout();
+    } else {
+      axios.get(
+        '/api/users',
+        {
+          headers: {
+            Authorization: `Bearer ${this.state.token}`
+          }
         }
-      }
-      )
-      .then(res => {
-        console.log(res.data.decoded.user);
-      })
-      .catch(err => {
-        if (err) {
+        )
+        .then(res => {
+          console.log(res.data.decoded.authUser);
+        })
+        .catch(err => {
           if (err.response.status === 403) {
             this.props.logout()
           }
-        }
-      });
+        });
+      }
   }
 
   render() {

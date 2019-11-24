@@ -12,9 +12,10 @@ import { useAuth } from './context/AuthContext'
 const App = () => {
 
   const auth = useAuth();
-  console.log(auth.user);
-  return auth.user ? (
-    <AuthenticatedApp auth={auth} displayName={auth.user.displayName} logout={auth.logout} />
+  console.log(auth);
+
+  return auth.token ? (
+    <AuthenticatedApp auth={auth} logout={auth.logout} />
   ) : (
     <UnauthenticatedApp login={auth.login} />
   );
