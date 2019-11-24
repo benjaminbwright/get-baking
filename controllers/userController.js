@@ -86,7 +86,13 @@ module.exports = {
   // get all users 
   getAllUsers: function( req, res ) {
     // TODO: Return all the users as json data
-    res.send("all the users will display here");
+    db.User.find()
+      .then(users => {
+        console.log(users);
+        res.json(users);
+      });
+      //TODO: add some error handling
+    
   }, 
 
   // get a single user

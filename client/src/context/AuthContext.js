@@ -17,13 +17,19 @@ class AuthProvider extends React.Component {
     try {
       // const authUser = await {displayName: "Ben"};
       const localStorageUser = JSON.parse(localStorage.getItem('getBakingUser'));
-      const { firstName, lastName } = localStorageUser.authUser
-      const authUser = {
-        displayName: `${firstName} ${lastName}`,
-        token: localStorageUser.token
+      if (localStorageUser.token) {
+        const { firstName, lastName } = localStorageUser.authUser
+        const authUser = {
+          displayName: `${firstName} ${lastName}`,
+          token: localStorageUser.token
+        }
+        this.setState({ authUser, loading: false });
+      } else {
+        localStorage.removeItem('getBakingUser');
+        this.setState({ authUser: undefined})
       }
 
-      this.setState({ authUser, loading: false });
+      
     } catch (error) { 
       this.setState({ error, loading: false });
     } 
@@ -47,7 +53,12 @@ class AuthProvider extends React.Component {
         // TODO: generat the display name in the the user model
         const { firstName, lastName } = res.data.authUser;
         const displayName = `${firstName} ${lastName}`;
-        this.setState({ authUser: { displayName }})
+        const authToken = res.data.token
+        console.log(authToken)
+        this.setState({ 
+          authUser: { displayName },
+          authToken
+        })
       });
     // this.setState({authUser: {displayName:'Lizzie'}})
   }
@@ -63,11 +74,12 @@ class AuthProvider extends React.Component {
 
   render() {
     const user = this.state.authUser;
+    const token = this.state.authtoken;
     const login = this.login;
     const logout = this.logout;
     
     return (
-      <AuthContext.Provider value={ { user, login, logout } } {...this.props} />
+      <AuthContext.Provider value={ { user, token, login, logout } } {...this.props} />
     )
   }
 }

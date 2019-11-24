@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+const auth = require('../../services/authenticationService');
 const userController = require('../../controllers/userController');
 
 // Create new user
@@ -13,7 +14,7 @@ router.post('/login', userController.loginUser);
 
 // Get all users
 // TODO: protect this route only for admins
-router.get('/', userController.getAllUsers);
+router.get('/', auth.verifyToken, userController.getAllUsers);
 
 // Get a single user
 // TODO: protect this route for authenticated users and/or admins

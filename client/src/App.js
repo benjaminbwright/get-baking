@@ -14,7 +14,7 @@ const App = () => {
   const auth = useAuth();
   console.log(auth.user);
   return auth.user ? (
-    <AuthenticatedApp displayName={auth.user.displayName} logout={auth.logout} />
+    <AuthenticatedApp auth={auth} displayName={auth.user.displayName} logout={auth.logout} />
   ) : (
     <UnauthenticatedApp login={auth.login} />
   );
