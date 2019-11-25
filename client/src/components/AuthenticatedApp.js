@@ -8,7 +8,8 @@ class AuthenticatedApp extends Component {
     super(props);
     this.state = {
       //get the token from local storage
-      token: token.getToken(`getBakingUser`),
+      user: JSON.parse(localStorage.getItem(`getBakingUser`)),
+      token: token.getToken(`getBakingToken`),
       users: []
     }
   }
@@ -38,11 +39,13 @@ class AuthenticatedApp extends Component {
   }
 
   render() {
+    const { firstName, lastName } = this.state.user;
+
     return (
       <div className="App">
         <header className="App-header">
           <h1>The Get Baking App</h1>
-          <p>You're logged in as {this.props.displayName}!!! Thumbs up!!!</p>
+          <p>You're logged in as {firstName} {lastName}!!! Thumbs up!!!</p>
           <button onClick={this.props.logout}>logout</button>
         </header>
       </div>
