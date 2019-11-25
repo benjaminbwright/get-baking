@@ -54,7 +54,7 @@ class AuthProvider extends React.Component {
         // setup display name
         // TODO: generat the display name in the the user model
   
-        this.setState({ 
+        this.setState({
           authToken
         })
       });
@@ -63,7 +63,7 @@ class AuthProvider extends React.Component {
 
   logout = () => {
     localStorage.removeItem(`getBakingUser`);
-    this.setState({authUser: undefined});
+    this.setState({authUser: undefined, authToken: undefined});
   }
   
   componentDidMount() {
@@ -71,14 +71,13 @@ class AuthProvider extends React.Component {
   }
 
   render() {
-    const user = this.state.authUser;
     const token = this.state.authToken;
     console.log(`token: ${token}`)
     const login = this.login;
     const logout = this.logout;
     
     return (
-      <AuthContext.Provider value={ { user, token, login, logout } } {...this.props} />
+      <AuthContext.Provider value={ { token, login, logout } } {...this.props} />
     )
   }
 }

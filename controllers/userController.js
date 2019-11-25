@@ -94,6 +94,9 @@ module.exports = {
           decoded: req.decoded
         }
         res.json(data);
+      })
+      .catch(err => {
+        console.log(err);
       });
       //TODO: add some error handling
     

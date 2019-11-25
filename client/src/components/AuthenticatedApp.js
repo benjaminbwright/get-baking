@@ -26,10 +26,11 @@ class AuthenticatedApp extends Component {
         }
         )
         .then(res => {
-          console.log(res.data.decoded.authUser);
+          console.log(res.data.decoded);
         })
         .catch(err => {
-          if (err.response.status === 403) {
+          if (err) {
+            console.log(err)
             this.props.logout()
           }
         });
