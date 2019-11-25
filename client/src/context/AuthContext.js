@@ -72,7 +72,7 @@ class AuthProvider extends React.Component {
 
   render() {
     const user = this.state.authUser;
-    const token = this.state.authtoken;
+    const token = this.state.authToken;
     console.log(`token: ${token}`)
     const login = this.login;
     const logout = this.logout;
