@@ -25,11 +25,14 @@ module.exports = {
         if (err) {
           req.authError = err;
         }
+        // add the decoded token to the request
         req.decoded = decoded;
+        
         next();
       });
       
     } else {
+      // send a 403 error if the token doesn't verify
       res.sendStatus(403);
     }
   }

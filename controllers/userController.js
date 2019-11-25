@@ -8,10 +8,12 @@ module.exports = {
 
   // Register/create a new user
   registerUser: function( req, res ) {
-    // 
+    // get the credentials from the request body
     const user = new db.User(req.body);
+    // create a new user
     db.User.create(user)
       .then(function(user){
+        // send back the user json object
         res.json(user);
       });
   },
@@ -22,6 +24,7 @@ module.exports = {
     const email = req.body.email;
     const password = req.body.password;
 
+    // set invalid to false
     let invalidInputs = false;
     const errors = [];
 
@@ -46,7 +49,6 @@ module.exports = {
     }
 
     // check the for a user in the database with matching credentials
-
     // Find user in the database if email and password are present
     if (email && password) {
       db.User.find({email: email})
@@ -60,9 +62,11 @@ module.exports = {
                 firstName: user[0].firstName,
                 lastName: user[0].lastName,
               }
-              console.log(tokenUser);
+
+              // get a new token
               auth.getToken(tokenUser, function(err, token) {
                 if (err) {console.log(err);}
+                // send a response with the token and the user
                 res.status(200).json({
                   message: "Auth OK",
                   token: token,
@@ -72,7 +76,9 @@ module.exports = {
               });
             });
           } else {
+            // add any errors to the errors array
             errors.push({auth: "Auth error - user not found."});
+            // send a response including the errors
             res.status(404).json({
               message: "Auth error - no match found for email or password",
               errors: errors
