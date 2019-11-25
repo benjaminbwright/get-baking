@@ -15,7 +15,7 @@ class AuthenticatedApp extends Component {
   }
 
   componentDidMount() {
-    if (!this.state.token) {
+    if (!this.state.token || !this.state.user) {
       this.props.logout();
     } else {
       axios.get(
@@ -27,7 +27,7 @@ class AuthenticatedApp extends Component {
         }
         )
         .then(res => {
-          console.log(res.data.decoded);
+          console.log(res);
         })
         .catch(err => {
           if (err) {
@@ -38,14 +38,21 @@ class AuthenticatedApp extends Component {
       }
   }
 
+  loggedInMessage = () => {
+    return this.state.user ? (
+      <p>You're logged in as { this.state.user.firstName } { this.state.user.lastName } !!! Thumbs up!!!</p>
+    ) : (
+      <p>You're logged in!!! Thumbs up!!!</p>
+    )
+  }
+
   render() {
-    const { firstName, lastName } = this.state.user;
 
     return (
       <div className="App">
         <header className="App-header">
           <h1>The Get Baking App</h1>
-          <p>You're logged in as {firstName} {lastName}!!! Thumbs up!!!</p>
+          {this.loggedInMessage()}
           <button onClick={this.props.logout}>logout</button>
         </header>
       </div>

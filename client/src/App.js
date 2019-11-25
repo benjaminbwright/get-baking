@@ -10,9 +10,7 @@ import { useAuth } from './context/AuthContext'
 // TODO: only show unauthenticated app if login is false
 
 const App = () => {
-
   const auth = useAuth();
-  console.log(auth);
 
   return auth.token ? (
     <AuthenticatedApp auth={auth} logout={auth.logout} />

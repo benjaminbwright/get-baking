@@ -99,6 +99,7 @@ module.exports = {
           users,
           decoded: req.decoded
         }
+        console.log(req.decoded)
         res.json(data);
       })
       .catch(err => {

@@ -47,16 +47,17 @@ class AuthProvider extends React.Component {
     }
     axios.post('/api/users/login', credentials)
       .then(res => {
-        const authToken = res.data.token
+        const authToken = res.data.token;
+        const authUser = res.data.user
         console.log(authToken)
         // add the authUser & token to local storage
         localStorage.setItem(`getBakingUser`, JSON.stringify(res.data.authUser));
         localStorage.setItem(`getBakingToken`, JSON.stringify(authToken));
         // setup display name
         // TODO: generat the display name in the the user model
-        console.log(res.data.authUser)
         this.setState({
-          authToken
+          authToken,
+          authUser
         })
       });
     // this.setState({authUser: {displayName:'Lizzie'}})
