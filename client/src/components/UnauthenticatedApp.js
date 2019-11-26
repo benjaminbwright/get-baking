@@ -3,15 +3,16 @@ import React, {Component} from 'react'
 
 //TODO: add this form to it's own component file
 const LoginForm = props => {
+
   return(
     <div id="login-form-container">
       <form id="login-form">
         <input 
-          name="userName"
+          name="email"
           type="text"
           onChange={props.handleInputChange} 
-          value={props.userName}
-          placeholder="User Name"
+          value={props.email}
+          placeholder="email"
         />
         <input 
           name="password"
@@ -32,18 +33,23 @@ class UnauthenticatedApp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userName: "",
+      email: "",
       password: ""
     }
   }
 
   handleInputChange = event => {
-
     const { name, value } = event.target;
-  
     this.setState({
       [name]: value
     });
+  }
+
+  handleLoginSubmit = event => {
+    event.preventDefault();
+    alert(this.state.email +':'+ this.state.password);
+    const {email, password} = this.state;
+    this.props.login({ email, password });
   }
   
 
@@ -52,7 +58,7 @@ class UnauthenticatedApp extends Component {
       <div className="App">
         <header className="App-header">
           <h1>The Get Baking App</h1>
-          <LoginForm userName={this.state.userName} password={this.state.password} login={this.props.login} handleInputChange={this.handleInputChange} />
+          <LoginForm email={this.state.email} password={this.state.password} login={this.handleLoginSubmit} handleInputChange={this.handleInputChange} />
           <button>Register</button>
         </header>
       </div>
