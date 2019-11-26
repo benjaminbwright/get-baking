@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 
+
+//TODO: add this form to it's own component file
 const LoginForm = props => {
   return(
     <div id="login-form-container">
@@ -9,13 +11,16 @@ const LoginForm = props => {
           type="text"
           onChange={props.handleInputChange} 
           value={props.userName}
+          placeholder="User Name"
         />
         <input 
           name="password"
           type="password"
           onChange={props.handleInputChange}
           value={props.password}
+          placeholder="Password"
         />
+        <button onClick={props.login} >Login</button>
       </form>
     </div>
   );
@@ -47,8 +52,7 @@ class UnauthenticatedApp extends Component {
       <div className="App">
         <header className="App-header">
           <h1>The Get Baking App</h1>
-          <LoginForm userName={this.state.userName} password={this.state.password} handleInputChange={this.handleInputChange} />
-          <button onClick={this.state.login} >Login</button>
+          <LoginForm userName={this.state.userName} password={this.state.password} login={this.props.login} handleInputChange={this.handleInputChange} />
           <button>Register</button>
         </header>
       </div>
