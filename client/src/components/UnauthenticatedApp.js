@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 import LoginForm from './LoginForm'
 
 // Unauthenticated app
@@ -31,7 +32,12 @@ class UnauthenticatedApp extends Component {
       <div className="App">
         <header className="App-header">
           <h1>The Get Baking App</h1>
-          <LoginForm email={this.state.email} password={this.state.password} login={this.handleLoginSubmit} handleInputChange={this.handleInputChange} />
+          <Router>
+            <Route 
+              path="/"
+              render={(props) => <LoginForm email={this.state.email} password={this.state.password} login={this.handleLoginSubmit} handleInputChange={this.handleInputChange} />}
+            />
+          </Router>
           <button>Register</button>
         </header>
       </div>
