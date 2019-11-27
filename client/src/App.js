@@ -4,17 +4,15 @@ import AuthenticatedApp from './components/AuthenticatedApp'
 import UnauthenticatedApp from './components/UnauthenticatedApp'
 import { useAuth } from './context/AuthContext'
 
-
-// TODO: write auth provider
-// TODO: Only show authenticated app if provider displayse logged in
-// TODO: only show unauthenticated app if login is false
-
 const App = () => {
+  // get auth from auth context provider
   const auth = useAuth();
-
+  
   return auth.token ? (
+    // show authenticate app if there's an auth token
     <AuthenticatedApp auth={auth} logout={auth.logout} />
   ) : (
+    // show unauthenticated app otherwise
     <UnauthenticatedApp login={auth.login} />
   );
 }
