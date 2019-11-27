@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 
-
 //TODO: add this form to it's own component file
 const LoginForm = props => {
 
@@ -26,7 +25,6 @@ const LoginForm = props => {
     </div>
   );
 }
-
 
 // Unauthenticated app
 class UnauthenticatedApp extends Component {

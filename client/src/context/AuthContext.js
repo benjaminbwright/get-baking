@@ -41,12 +41,11 @@ class AuthProvider extends React.Component {
 
   login = ({ email, password }) => {
     const credentials = {
-      email: 'flm@fiddle.com',
-      password: 'hgotlek'
-      // email,
-      // password
+      // email: 'flm@fiddle.com',
+      // password: 'hgotlek'
+      email,
+      password
     }
-    console.log("login running");
     axios.post('/api/users/login', credentials)
       .then(res => {
         const authToken = res.data.token;
