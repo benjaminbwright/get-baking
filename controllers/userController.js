@@ -14,7 +14,7 @@ module.exports = {
     db.User.create(user)
       .then(function(user){
         // send back the user json object
-        res.json(user);
+        res.json();
       });
   },
 

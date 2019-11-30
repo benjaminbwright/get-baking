@@ -11,21 +11,25 @@ const RegistrationForm = props => {
           type="text"
           name="firstName"
           placeholder="First Name"
+          onChange={props.handleInputChange}
         />
         <input 
           type="text" 
           name="lastName"
           placeholder="Last Name"
+          onChange={props.handleInputChange}
         />
         <input 
           type="email"
           name="email"
           placeholder="Email"
+          onChange={props.handleInputChange}
         />
         <input 
           type="password"
           name="password"
           placeholder="Password"
+          onChange={props.handleInputChange}
         />
         <button onClick={props.register}>Register</button>
       </form>
@@ -38,6 +42,8 @@ class UnauthenticatedApp extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      firstName: "",
+      lastName: "",
       email: "",
       password: ""
     }
@@ -52,14 +58,14 @@ class UnauthenticatedApp extends Component {
 
   handleLoginSubmit = event => {
     event.preventDefault();
-    alert(this.state.email +':'+ this.state.password);
     const {email, password} = this.state;
     this.props.login({ email, password });
   }
 
   handleRegistrationSubmit = event => {
     event.preventDefault();
-    console.log(`You've registered!!!`);
+    const {firstName, lastName, email, password} = this.state;
+    this.props.register({firstName, lastName, email, password});
   }
   
 
@@ -74,8 +80,8 @@ class UnauthenticatedApp extends Component {
               render={props => <LoginForm email={this.state.email} password={this.state.password} login={this.handleLoginSubmit} handleInputChange={this.handleInputChange} />}
             />
             <Route 
-              exact path="/register"
-              render={props => <RegistrationForm register={this.handleRegistrationSubmit} /> }
+              exact fpath="/register"
+              render={props => <RegistrationForm firstName={this.state.firstName} lastName={this.state.lastName} username={this.state.username} password={this.state.password} register={this.handleRegistrationSubmit} handleInputChange={this.handleInputChange} /> }
             />
           </Router>
         </header>

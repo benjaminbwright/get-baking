@@ -38,6 +38,21 @@ class AuthProvider extends React.Component {
     } 
   };
 
+  register = ({ firstName, lastName, email, password}) => {
+    const credentials = {
+      firstName,
+      lastName,
+      email,
+      password
+    }
+    axios.post('/api/users', credentials)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
 
   login = ({ email, password }) => {
     const credentials = {
@@ -77,9 +92,10 @@ class AuthProvider extends React.Component {
     const token = this.state.authToken;
     const login = this.login;
     const logout = this.logout;
+    const register = this.register;
     
     return (
-      <AuthContext.Provider value={ { token, login, logout } } {...this.props} />
+      <AuthContext.Provider value={ { token, register, login, logout } } {...this.props} />
     )
   }
 }

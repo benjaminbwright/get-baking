@@ -13,7 +13,7 @@ const App = () => {
     <AuthenticatedApp auth={auth} logout={auth.logout} />
   ) : (
     // show unauthenticated app otherwise
-    <UnauthenticatedApp login={auth.login} />
+    <UnauthenticatedApp register={auth.register} login={auth.login} />
   );
 }
 

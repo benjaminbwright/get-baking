@@ -13,13 +13,14 @@ if (mongoose.connection.readyState === 0)
 
 
 let UserSchema = new Schema({
-    username: { type: String, required: true },
     // TODO: add password validation
     password: { type: String, required: true },
     firstName: { type: String },
     lastName: { type: String },
     email: { 
         type: String,
+        unique: true,
+        required: true,
         match: [ 
             /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
             "You must enter a valid email address."
