@@ -2,6 +2,37 @@ import React, {Component} from 'react'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import LoginForm from './LoginForm'
 
+// Registration form
+const RegistrationForm = props => {
+  return (
+    <div id="registration-form-container">
+      <form id="registration-form">
+        <input 
+          type="text"
+          name="firstName"
+          placeholder="First Name"
+        />
+        <input 
+          type="text" 
+          name="lastName"
+          placeholder="Last Name"
+        />
+        <input 
+          type="email"
+          name="email"
+          placeholder="Email"
+        />
+        <input 
+          type="password"
+          name="password"
+          placeholder="Password"
+        />
+        <button onClick={props.register}>Register</button>
+      </form>
+    </div>
+  );
+}
+
 // Unauthenticated app
 class UnauthenticatedApp extends Component {
   constructor(props) {
@@ -25,6 +56,11 @@ class UnauthenticatedApp extends Component {
     const {email, password} = this.state;
     this.props.login({ email, password });
   }
+
+  handleRegistrationSubmit = event => {
+    event.preventDefault();
+    console.log(`You've registered!!!`);
+  }
   
 
   render(){
@@ -35,10 +71,10 @@ class UnauthenticatedApp extends Component {
           <Router>
             <Route 
               path="/"
-              render={(props) => <LoginForm email={this.state.email} password={this.state.password} login={this.handleLoginSubmit} handleInputChange={this.handleInputChange} />}
+              render={props => <LoginForm email={this.state.email} password={this.state.password} login={this.handleLoginSubmit} handleInputChange={this.handleInputChange} />}
             />
           </Router>
-          <button>Register</button>
+          <RegistrationForm register={this.handleRegistrationSubmit} />
         </header>
       </div>
     );

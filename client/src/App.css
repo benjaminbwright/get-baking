@@ -21,12 +21,14 @@
     color: #09d3ac;
 }
 
-#login-form {
+#login-form,
+#registration-form {
     display: flex;
     flex-direction: column;
 }
 
-#login-form input {
+#login-form input,
+#registration-form input {
     padding: 1em;
     margin: .5em .5em 1em;
     border: none;

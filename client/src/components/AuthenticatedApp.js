@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {BrowserRouter as Router, Rout} from 'react-router-dom'
+// import {BrowserRouter as Router, Rout} from 'react-router-dom'
 import axios from 'axios'
 import token from '../utils/token'
 
