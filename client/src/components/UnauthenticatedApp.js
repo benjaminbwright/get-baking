@@ -70,11 +70,14 @@ class UnauthenticatedApp extends Component {
           <h1>The Get Baking App</h1>
           <Router>
             <Route 
-              path="/"
+              exact path="/"
               render={props => <LoginForm email={this.state.email} password={this.state.password} login={this.handleLoginSubmit} handleInputChange={this.handleInputChange} />}
             />
+            <Route 
+              exact path="/register"
+              render={props => <RegistrationForm register={this.handleRegistrationSubmit} /> }
+            />
           </Router>
-          <RegistrationForm register={this.handleRegistrationSubmit} />
         </header>
       </div>
     );

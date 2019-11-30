@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 //TODO: add this form to it's own component file
 const LoginForm = props => {
@@ -22,6 +23,7 @@ const LoginForm = props => {
         />
         <button onClick={props.login} >Login</button>
       </form>
+      <Link to="/register">Create Account</Link>
     </div>
   );
 }
