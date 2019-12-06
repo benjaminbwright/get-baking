@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom'
 import LoginForm from './LoginForm'
 
 // Registration form
+// TODO: put this form in it's own file
 const RegistrationForm = props => {
   return (
     <div id="registration-form-container">
@@ -80,7 +81,7 @@ class UnauthenticatedApp extends Component {
               render={props => <LoginForm email={this.state.email} password={this.state.password} login={this.handleLoginSubmit} handleInputChange={this.handleInputChange} />}
             />
             <Route 
-              exact fpath="/register"
+              exact path="/register"
               render={props => <RegistrationForm firstName={this.state.firstName} lastName={this.state.lastName} username={this.state.username} password={this.state.password} register={this.handleRegistrationSubmit} handleInputChange={this.handleInputChange} /> }
             />
           </Router>

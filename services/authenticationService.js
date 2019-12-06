@@ -4,7 +4,7 @@ module.exports = {
   // take a user object and generate a token
   getToken: function(user, callback) {
     // Sign the token
-    jwt.sign({user}, process.env.JWT_PRIVATEKEY, {expiresIn: "1m"}, function(err, token) {
+    jwt.sign({user}, process.env.JWT_PRIVATEKEY, {expiresIn: "1h"}, function(err, token) {
       callback(err, token);
     });
   },

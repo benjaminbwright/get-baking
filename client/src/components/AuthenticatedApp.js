@@ -1,7 +1,19 @@
 import React, { Component } from 'react'
-// import {BrowserRouter as Router, Rout} from 'react-router-dom'
+// import {BrowserRouter as Router, Route} from 'react-router-dom'
 import axios from 'axios'
 import token from '../utils/token'
+
+// import compontents
+import HeaderUI from './HeaderUI'
+
+const recipeRequestCard = () => {
+  return (
+    <div className="recipe-request card">
+      <button className="button-book-it"></button>
+    </div>
+  )
+}
+
 
 // Authenticated app
 class AuthenticatedApp extends Component {
@@ -51,11 +63,9 @@ class AuthenticatedApp extends Component {
 
     return (
       <div className="App">
-        <header className="App-header">
-          <h1>The Get Baking App</h1>
-          {this.loggedInMessage()}
-          <button onClick={this.props.logout}>logout</button>
-        </header>
+        <HeaderUI />
+        {this.loggedInMessage()}
+        <button onClick={this.props.logout}>logout</button>
       </div>
     )
   }
