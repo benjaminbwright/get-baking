@@ -19,16 +19,27 @@
     align-items: center;
 }
 
-#login-form-container,
-#registration-form-container {
-    width: 80%;
-}
-
-#login-form,
-#registration-form {
+.App.Unauthenticated form {
     display: flex;
     flex-direction: column;
-    width: 90%;
+    justify-content: center;
+    align-items: center;
+}
+
+.App.Unauthenticated form .button-container {
+    border: solid 2px #fff;
+    padding: 2px;
+}
+
+.App.Unauthenticated form button {
+    background: #fff;
+    width: 200px;
+    height: 50px;
+    text-align: center;
+}
+
+#registration-form-container {
+    width: 80%;
 }
 
 #login-form input,

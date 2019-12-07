@@ -1,4 +1,5 @@
 import React from 'react'
+import Logo from '../../components/Logo'
 import LoginForm from '../../components/LoginForm'
 
 export default function WelcomePage(props) {
@@ -12,7 +13,7 @@ export default function WelcomePage(props) {
 
   return(
     <div id="welcome" className="page">
-      This is the welcome page.
+      <Logo />
       <LoginForm email={email} password={password} login={login} handleInputChange={handleInputChange} />
     </div>
   )
