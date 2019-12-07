@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 // import LoginForm from './LoginForm'
-import RegistrationForm from './RegistrationForm'
 import WelcomePage from '../pages/WelcomePage';
+import SignUpPage from '../pages/SignUpPage'
 
 // Unauthenticated app
 class UnauthenticatedApp extends Component {
@@ -45,7 +45,7 @@ class UnauthenticatedApp extends Component {
             />
             <Route 
               exact path="/register"
-              render={props => <RegistrationForm firstName={this.state.firstName} lastName={this.state.lastName} username={this.state.username} password={this.state.password} register={this.handleRegistrationSubmit} handleInputChange={this.handleInputChange} /> }
+              render={props => <SignUpPage firstName={this.state.firstName} lastName={this.state.lastName} username={this.state.username} password={this.state.password} register={this.handleRegistrationSubmit} handleInputChange={this.handleInputChange} /> }
             />
           </Router>
       </div>

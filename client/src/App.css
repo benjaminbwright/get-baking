@@ -39,10 +39,6 @@
     text-align: center;
 }
 
-#registration-form-container {
-    width: 80%;
-}
-
 #login-form input,
 #registration-form input {
     padding: 1em;

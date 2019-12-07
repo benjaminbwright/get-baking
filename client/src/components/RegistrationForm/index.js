@@ -31,7 +31,9 @@ export default function RegistrationForm(props) {
           placeholder="Password"
           onChange={props.handleInputChange}
         />
-        <button onClick={props.register}>Register</button>
+        <div className="button-container">
+          <button onClick={props.register}>Register</button>
+        </div>
       </form>
     </div>
   );
