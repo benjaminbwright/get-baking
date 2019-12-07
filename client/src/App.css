@@ -68,3 +68,11 @@ input::placeholder {
     background: linear-gradient(156.93deg, #DCDCDC 0%, rgba(255, 255, 255, 0) 89.48%), #E6E6E6;
     min-height: 100vh;
 }
+
+.App.Authenticated .container {
+    margin-top: 75px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

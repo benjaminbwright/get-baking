@@ -56,10 +56,12 @@ export default class AuthenticatedApp extends Component {
     return (
       <div className="App Authenticated">
         <HeaderUI />
-        <RecipeRequestCard />
-        <RecipeRequestCard />
-        <RecipeRequestCard />
-        <button onClick={this.props.logout}>logout</button>
+        <div id="main" className="container">
+          <RecipeRequestCard />
+          <RecipeRequestCard />
+          <RecipeRequestCard />
+          <button onClick={this.props.logout}>logout</button>
+        </div>
       </div>
     )
   }
