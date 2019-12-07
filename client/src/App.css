@@ -65,6 +65,6 @@ input::placeholder {
 /* Authenticated App Style */
 
 .App.Authenticated {
-    background: linear-gradient(156.93deg, #605F5F 0%, rgba(255, 255, 255, 0) 89.48%), #262626;
+    background: linear-gradient(156.93deg, #DCDCDC 0%, rgba(255, 255, 255, 0) 89.48%), #E6E6E6;
     min-height: 100vh;
 }

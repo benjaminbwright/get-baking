@@ -9,7 +9,7 @@ import RecipeRequestCard from './RecipeRequestCard'
 
 
 // Authenticated app
-class AuthenticatedApp extends Component {
+export default class AuthenticatedApp extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -53,16 +53,14 @@ class AuthenticatedApp extends Component {
   }
 
   render() {
-
     return (
       <div className="App Authenticated">
         <HeaderUI />
-        {this.loggedInMessage()}
+        <RecipeRequestCard />
+        <RecipeRequestCard />
         <RecipeRequestCard />
         <button onClick={this.props.logout}>logout</button>
       </div>
     )
   }
 }
-
-export default AuthenticatedApp
