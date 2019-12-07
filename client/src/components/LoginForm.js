@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-//TODO: add this form to it's own component file
 const LoginForm = props => {
 
   return(
