@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 // import LoginForm from './LoginForm'
 import WelcomePage from '../pages/WelcomePage';
+import LoginPage from '../pages/LoginPage';
 import SignUpPage from '../pages/SignUpPage'
 
 // Unauthenticated app
@@ -41,10 +42,14 @@ class UnauthenticatedApp extends Component {
           <Router>
             <Route 
               exact path="/"
-              render={props => <WelcomePage email={this.state.email} password={this.state.password} login={this.handleLoginSubmit} handleInputChange={this.handleInputChange} />}
+              render={() => <WelcomePage />}
             />
             <Route 
-              exact path="/register"
+              exact path="/login"
+              render={props => <LoginPage email={this.state.email} password={this.state.password} login={this.handleLoginSubmit} handleInputChange={this.handleInputChange} />}
+            />
+            <Route 
+              exact path="/signup"
               render={props => <SignUpPage firstName={this.state.firstName} lastName={this.state.lastName} username={this.state.username} password={this.state.password} register={this.handleRegistrationSubmit} handleInputChange={this.handleInputChange} /> }
             />
           </Router>

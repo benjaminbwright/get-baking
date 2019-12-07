@@ -1,20 +1,21 @@
 import React from 'react'
+import { Link }  from 'react-router-dom'
 import Logo from '../../components/Logo'
-import LoginForm from '../../components/LoginForm'
 
-export default function WelcomePage(props) {
-  // what we need from props
-  const {
-    email,
-    password,
-    login,
-    handleInputChange
-  } = props;
-
+export default function WelcomePage() {
   return(
-    <div id="welcome" className="page">
+    <div id="login" className="page">
       <Logo />
-      <LoginForm email={email} password={password} login={login} handleInputChange={handleInputChange} />
+      <div className="button-container">
+        <Link to="/login">
+          <button>Login</button>
+        </Link>
+      </div>
+      <div className="button-container">
+        <Link to="/signup">
+          <button>Create Account</button>
+        </Link>
+      </div>
     </div>
   )
 }

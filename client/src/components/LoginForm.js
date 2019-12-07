@@ -25,7 +25,7 @@ const LoginForm = props => {
         </div>
       </form>
       <div className="button-container">
-        <Link to="/register">
+        <Link to="/signup">
           <button>Create Account</button>
         </Link>
       </div>
