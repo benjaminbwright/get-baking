@@ -5,14 +5,7 @@ import token from '../utils/token'
 
 // import compontents
 import HeaderUI from './HeaderUI'
-
-const recipeRequestCard = () => {
-  return (
-    <div className="recipe-request card">
-      <button className="button-book-it"></button>
-    </div>
-  )
-}
+import RecipeRequestCard from './RecipeRequestCard'
 
 
 // Authenticated app
@@ -62,9 +55,10 @@ class AuthenticatedApp extends Component {
   render() {
 
     return (
-      <div className="App">
+      <div className="App Authenticated">
         <HeaderUI />
         {this.loggedInMessage()}
+        <RecipeRequestCard />
         <button onClick={this.props.logout}>logout</button>
       </div>
     )

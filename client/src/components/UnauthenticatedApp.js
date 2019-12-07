@@ -6,7 +6,7 @@ import LoginPage from '../pages/LoginPage';
 import SignUpPage from '../pages/SignUpPage'
 
 // Unauthenticated app
-class UnauthenticatedApp extends Component {
+export default class UnauthenticatedApp extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -57,5 +57,3 @@ class UnauthenticatedApp extends Component {
     );
   }
 }
-
-export default UnauthenticatedApp

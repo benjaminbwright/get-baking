@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Pattaya&display=swap');
 .App {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .App-logo {
@@ -57,4 +59,12 @@ input[type=text] {
 
 input::placeholder {
     color: #ffffff;
+}
+
+
+/* Authenticated App Style */
+
+.App.Authenticated {
+    background: linear-gradient(156.93deg, #605F5F 0%, rgba(255, 255, 255, 0) 89.48%), #262626;
+    min-height: 100vh;
 }
