@@ -48,7 +48,6 @@ class UnauthenticatedApp extends Component {
               render={props => <RegistrationForm firstName={this.state.firstName} lastName={this.state.lastName} username={this.state.username} password={this.state.password} register={this.handleRegistrationSubmit} handleInputChange={this.handleInputChange} /> }
             />
           </Router>
-        
       </div>
     );
   }

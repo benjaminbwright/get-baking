@@ -24,7 +24,11 @@ const LoginForm = props => {
           <button onClick={props.login} >Login</button>
         </div>
       </form>
-      <Link to="/register">Create Account</Link>
+      <div className="button-container">
+        <Link to="/register">
+          <button>Create Account</button>
+        </Link>
+      </div>
     </div>
   );
 }

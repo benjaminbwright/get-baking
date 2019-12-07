@@ -26,12 +26,13 @@
     align-items: center;
 }
 
-.App.Unauthenticated form .button-container {
+.App.Unauthenticated .button-container {
     border: solid 2px #fff;
     padding: 2px;
+    margin: 10px 40px;
 }
 
-.App.Unauthenticated form button {
+.App.Unauthenticated button {
     background: #fff;
     width: 200px;
     height: 50px;
